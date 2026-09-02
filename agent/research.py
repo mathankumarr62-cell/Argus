@@ -17,9 +17,7 @@ def prepare_research_tasks(state: AgentState) -> AgentState:
         search_results = search_web(search_query)
 
         for result in search_results:
-            results.append(
-                f"{result['title']}: {result['snippet']}"
-            )
+            results.append(result)
 
     state["results"] = results
 
