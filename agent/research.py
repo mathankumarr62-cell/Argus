@@ -3,12 +3,18 @@ from agent.search import search_web
 
 
 def prepare_research_tasks(state: AgentState) -> AgentState:
-    plan = state["research_plan"]
+    query = state["query"]
+
+    search_queries = [
+        f"{query} definition",
+        f"{query} how it works",
+        f"{query} applications and examples"
+    ]
 
     results = []
 
-    for task in plan:
-        search_results = search_web(task)
+    for search_query in search_queries:
+        search_results = search_web(search_query)
 
         for result in search_results:
             results.append(
